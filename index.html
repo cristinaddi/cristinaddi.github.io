@@ -15,6 +15,7 @@
             --brand-wine-hover: #4d0026;
             --light-gray: #f9f9f9;
             --text-gray: #555555;
+            --border-color: #eaeaea;
         }
 
         /* --- Global Reset & Typography --- */
@@ -151,14 +152,15 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         .property-card:hover {
             transform: translateY(-10px);
         }
         .property-img {
             width: 100%;
-            height: 200px;
-            background-color: #ddd; /* Placeholder for property images */
+            height: 250px;
+            background-color: #ddd; 
             object-fit: cover;
         }
         .property-info {
@@ -179,6 +181,62 @@
             gap: 1rem;
             color: var(--text-gray);
             font-size: 0.9rem;
+        }
+
+        /* --- Advanced Pop-up Modals --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: var(--primary-white);
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: modalFade 0.4s ease;
+        }
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--primary-black);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover {
+            color: var(--brand-wine);
+        }
+        .modal-main-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 1.5rem;
         }
 
         /* --- About Section --- */
@@ -233,6 +291,12 @@
         .btn-full {
             width: 100%;
         }
+        .contact-methods-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
 
         /* --- Footer --- */
         footer {
@@ -240,7 +304,7 @@
             color: var(--primary-black);
             text-align: center;
             padding: 3rem 2rem;
-            border-top: 1px solid #eaeaea;
+            border-top: 1px solid var(--border-color);
         }
         .socials {
             margin: 1.5rem 0;
@@ -277,7 +341,10 @@
                 font-size: 2.5rem;
             }
             .nav-links {
-                display: none; /* In a full build, this becomes a hamburger menu */
+                display: none; 
+            }
+            .modal-buttons, .contact-methods-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -311,57 +378,80 @@
 
     <section id="properties" class="properties fade-in">
         <h2>Featured Listings</h2>
+        <p style="text-align:center; margin-top:-1.5rem; margin-bottom:3rem; color:var(--text-gray);">Click any property card to view comprehensive details.</p>
+        
         <div class="properties-grid">
             
-            <div class="property-card">
-                
-                <a href="https://danieldobre.ro/apartament-2-camere-de-inchiriat-titan-bucuresti-906" target="_blank">
-                    <img src="titan.jpg" class="property-img" alt="Apartament 2 camere - Metrou Titan">
-                </a>
-                
+            <div class="property-card" onclick="openModal('modal1')">
+                <img src="titan.jpg" class="property-img" alt="Apartament 2 camere - Metrou Titan">
                 <div class="property-info">
-                    <div class="property-price">€500</div>
-                    
-                    <a href="https://danieldobre.ro/apartament-2-camere-de-inchiriat-titan-bucuresti-906" target="_blank">
-                        <h3 class="property-title">Apartament 2 camere - Metrou Titan</h3>
-                    </a>
-                    
+                    <div class="property-price">€500 / month</div>
+                    <h3 class="property-title">Apartament 2 camere - Metrou Titan</h3>
                     <div class="property-specs">
                         <span>2 Camere</span> • <span>1 Baie</span> • <span>48.72 mp</span>
                     </div>
-                    
-                    <a href="https://danieldobre.ro/apartament-2-camere-de-inchiriat-titan-bucuresti-906" target="_blank" class="btn" style="margin-top: 1rem; width: 100%; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
+                    <div class="btn btn-full" style="margin-top: 1rem; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
                         View Full Details
-                    </a>
-                    
-                </div>
-            </div>
-<div class="property-card">
-                <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank">
-                    <img src="panu.jpg" class="property-img" alt="Property">
-                </a>
-                <div class="property-info">
-                    <div class="property-price">€800</div>
-                    <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank">
-                        <h3 class="property-title">Apartament mare si spatios - Unirii - Anastasie Panu</h3>
-                    </a>
-                    <div class="property-specs">
-                        <span>3 Camere</span> • <span>2 Bai</span> • <span>97 mp</span>
-                    </div>
-                    <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank" class="btn" style="margin-top: 1rem; width: 100%; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
-                        View Full Details
-                    </a>
-                </div>
-            </div>
                     </div>
                 </div>
             </div>
 
-            
+            <div class="property-card" onclick="openModal('modal2')">
+                <img src="panu.jpg" class="property-img" alt="Apartament mare si spatios - Unirii">
+                <div class="property-info">
+                    <div class="property-price">€800 / month</div>
+                    <h3 class="property-title">Apartament mare si spatios - Unirii - Anastasie Panu</h3>
+                    <div class="property-specs">
+                        <span>3 Camere</span> • <span>2 Bai</span> • <span>97 mp</span>
+                    </div>
+                    <div class="btn btn-full" style="margin-top: 1rem; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
+                        View Full Details
+                    </div>
+                </div>
             </div>
 
         </div>
     </section>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <img src="titan.jpg" class="modal-main-img" alt="Titan Apartment View">
+            
+            <div class="property-price">€500 / month</div>
+            <h2>Apartament 2 camere - Metrou Titan</h2>
+            <div class="property-specs" style="margin-bottom: 1rem;">
+                <span><strong>Camere:</strong> 2</span> • <span><strong>Băi:</strong> 1</span> • <span><strong>Suprafață:</strong> 48.72 mp</span>
+            </div>
+            
+            <p style="color: var(--text-gray);">Apartament excelent situat, ideal pentru închiriere. Spațios, luminos și foarte aproape de stația de metrou Titan, oferind acces rapid către orice punct al orașului.</p>
+            
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-2-camere-de-inchiriat-titan-bucuresti-906" target="_blank" class="btn" style="text-align:center; background-color: var(--primary-black);">Vezi pe Site-ul Agenției</a>
+                <a href="#contact" class="btn" onclick="closeModal('modal1'); prepareContact('Apartament 2 camere - Metrou Titan (€500)')" style="text-align:center;">Inquire About This Property</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <img src="panu.jpg" class="modal-main-img" alt="Anastasie Panu Apartment View">
+            
+            <div class="property-price">€800 / month</div>
+            <h2>Apartament mare si spatios - Unirii - Anastasie Panu</h2>
+            <div class="property-specs" style="margin-bottom: 1rem;">
+                <span><strong>Camere:</strong> 3</span> • <span><strong>Băi:</strong> 2</span> • <span><strong>Suprafață:</strong> 97 mp</span>
+            </div>
+            
+            <p style="color: var(--text-gray);">Apartament premium de 3 camere situat în inima orașului, zona Unirii - Anastasie Panu. Oferă o suprafață generoasă de 97 mp, finisaje de calitate și spații vitrate mari.</p>
+            
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank" class="btn" style="text-align:center; background-color: var(--primary-black);">Vezi pe Site-ul Agenției</a>
+                <a href="#contact" class="btn" onclick="closeModal('modal2'); prepareContact('Apartament Unirii - Anastasie Panu (€800)')" style="text-align:center;">Inquire About This Property</a>
+            </div>
+        </div>
+    </div>
 
     <section id="about" class="about fade-in">
         <h2>Backed by the Best</h2>
@@ -372,31 +462,34 @@
     <section id="contact" class="contact fade-in">
         <h2>Let's Find Your Perfect Place</h2>
         <div class="contact-container">
-            <form action="#" method="POST">
+            <form onsubmit="return false;">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    <input type="text" id="name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+40 700 000 000" required>
+                    <input type="tel" id="phone" placeholder="+40 700 000 000" required>
                 </div>
                 <div class="form-group">
                     <label for="message">How can I help you?</label>
-                    <textarea id="message" name="message" rows="4" placeholder="I'm looking to buy a 2-room apartment..."></textarea>
+                    <textarea id="message" rows="4" placeholder="I am interested in..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-full">Send Message</button>
+                
+                <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 1rem;">Select your preferred instant submission channel below:</p>
+                
+                <div class="contact-methods-grid">
+                    <button type="button" onclick="sendViaWhatsApp()" class="btn" style="background-color: #25D366; font-size:0.9rem; padding:0.8rem;">Send via WhatsApp</button>
+                    <button type="button" onclick="sendViaEmail()" class="btn" style="background-color: var(--brand-wine); font-size:0.9rem; padding:0.8rem;">Send via Mail App</button>
+                </div>
             </form>
         </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 1rem;"><img src="logo.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px;">
-	<img src="LOGO TRANSPARENT.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px;">
+        <div class="logo" style="margin-bottom: 1rem;">
+            <img src="logo.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px; margin-right: 10px;">
+            <img src="LOGO TRANSPARENT.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px;">
         </div>
         <p><strong>Cristina Dobre</strong> | Real Estate Agent</p>
         <p>Email: <a href="mailto:cristina@danieldobre.ro">cristina@danieldobre.ro</a> | Phone: +40 770 741 602</p>
@@ -411,12 +504,8 @@
     </footer>
 
     <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
+        /* --- Scroll Animation Logic --- */
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -425,10 +514,50 @@
                 }
             });
         }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(section => observer.observe(section));
 
-        document.querySelectorAll('.fade-in').forEach(section => {
-            observer.observe(section);
-        });
+        /* --- Built-in Pop-up Modal Operations --- */
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            document.body.style.overflow = "hidden"; /* Freeze page scroll when open */
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; /* Restore scroll */
+        }
+        // Close modal automatically if clicking outside the bounding content box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        /* --- Automate Form Injection when Clicking from a Property Pop-up --- */
+        function prepareContact(propertyName) {
+            document.getElementById('message').value = "Hello Cristina, I would like to schedule a viewing or receive more details regarding the " + propertyName + ".";
+        }
+
+        /* --- Device Routing Contact Submissions --- */
+        function getFormDetails() {
+            const name = document.getElementById('name').value || "Client";
+            const phone = document.getElementById('phone').value || "Not provided";
+            const msg = document.getElementById('message').value || "Interested in services.";
+            return { name, phone, msg };
+        }
+
+        function sendViaWhatsApp() {
+            const data = getFormDetails();
+            const formattedText = encodeURIComponent(`*New Inquiry via Website*\n\n*Name:* ${data.name}\n*Phone:* ${data.phone}\n*Message:* ${data.msg}`);
+            window.open(`https://wa.me/40770741602?text=${formattedText}`, '_blank');
+        }
+
+        function sendViaEmail() {
+            const data = getFormDetails();
+            const subject = encodeURIComponent("Website Property Inquiry - " + data.name);
+            const body = encodeURIComponent(`Name: ${data.name}\nPhone: ${data.phone}\n\nMessage:\n${data.msg}`);
+            window.location.href = `mailto:cristina@danieldobre.ro?subject=${subject}&body=${body}`;
+        }
     </script>
 </body>
 </html>
