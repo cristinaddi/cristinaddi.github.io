@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristina Dobre | Daniel Dobre Imobiliare</title>
-    <meta name="description" content="Find your dream home with Cristina Dobre, premium real estate agent at Daniel Dobre Imobiliare.">
+    <meta name="description" content="Găsește-ți casa de vis cu Cristina Dobre, agent imobiliar premium la Daniel Dobre Imobiliare.">
     
     <style>
         /* --- Color Palette & Variables --- */
@@ -35,6 +35,532 @@
         a {
             text-decoration: none;
             color: inherit;
+        }
+        h1, h2, h3 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* --- Buttons --- */
+        .btn {
+            background-color: var(--brand-wine);
+            color: var(--primary-white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: var(--brand-wine-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--brand-wine);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 120px auto 4rem auto;
+            padding: 0 2rem;
+            min-height: 70vh;
+        }
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text h1 span {
+            color: var(--brand-wine);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+        .hero-image {
+            flex: 1;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 15px 15px 0px var(--brand-wine);
+        }
+
+        /* --- Featured Properties Section --- */
+        .properties {
+            background-color: var(--light-gray);
+            padding: 5rem 2rem;
+        }
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .property-card {
+            background: var(--primary-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+        .property-img {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd; 
+            object-fit: cover;
+        }
+        .property-info {
+            padding: 1.5rem;
+        }
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-wine);
+            margin-bottom: 0.5rem;
+        }
+        .property-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .property-specs {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- Advanced Pop-up Modals --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: var(--primary-white);
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: modalFade 0.4s ease;
+        }
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--primary-black);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover {
+            color: var(--brand-wine);
+        }
+        .modal-main-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        /* --- About Section --- */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 5rem 2rem;
+        }
+        .contact h2 {
+            color: var(--primary-white);
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--primary-white);
+            color: var(--primary-black);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-wine);
+        }
+        .btn-full {
+            width: 100%;
+        }
+        .contact-methods-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .socials {
+            margin: 1.5rem 0;
+        }
+        .socials a {
+            margin: 0 10px;
+            font-weight: 600;
+            color: var(--brand-wine);
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                margin-top: 100px;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-top: 3rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .modal-buttons, .contact-methods-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#home"><img src="logo.png" alt="Daniel Dobre Imobiliare Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Acasă</a>
+                <a href="#properties">Proprietăți</a>
+                <a href="#about">Despre Cristina</a>
+                <a href="#contact" class="btn" style="color: white; padding: 0.5rem 1.5rem;">Contactează-mă</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero fade-in">
+        <div class="hero-text">
+            <h1>Casa ta de vis, <span>negociată de un expert.</span></h1>
+            <p>Sunt Cristina Dobre, agentul tău imobiliar dedicat la Daniel Dobre Imobiliare. Ofer rezultate bazate pe date și asistență completă — 100% pentru tine.</p>
+            <a href="#properties" class="btn">Vezi Proprietățile Exclusive</a>
+        </div>
+        <div class="hero-image">
+            <img src="cristina.jpg" alt="Cristina Dobre">
+        </div>
+    </section>
+
+    <section id="properties" class="properties fade-in">
+        <h2>Proprietăți Recomandate</h2>
+        <p style="text-align:center; margin-top:-1.5rem; margin-bottom:3rem; color:var(--text-gray);">Apasă pe orice proprietate pentru a vedea detaliile complete.</p>
+        
+        <div class="properties-grid">
+            
+            <div class="property-card" onclick="openModal('modal1')">
+                <img src="titan.jpg" class="property-img" alt="Apartament 2 camere - Metrou Titan">
+                <div class="property-info">
+                    <div class="property-price">€500 / lună</div>
+                    <h3 class="property-title">Apartament 2 camere - Metrou Titan</h3>
+                    <div class="property-specs">
+                        <span>2 Camere</span> • <span>1 Baie</span> • <span>48.72 mp</span>
+                    </div>
+                    <div class="btn btn-full" style="margin-top: 1rem; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
+                        Vezi Detalii
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal('modal2')">
+                <img src="panu.jpg" class="property-img" alt="Apartament mare si spatios - Unirii">
+                <div class="property-info">
+                    <div class="property-price">€800 / lună</div>
+                    <h3 class="property-title">Apartament mare și spațios - Unirii - Anastasie Panu</h3>
+                    <div class="property-specs">
+                        <span>3 Camere</span> • <span>2 Băi</span> • <span>97 mp</span>
+                    </div>
+                    <div class="btn btn-full" style="margin-top: 1rem; text-align: center; font-size: 0.9rem; padding: 0.8rem;">
+                        Vezi Detalii
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <img src="titan.jpg" class="modal-main-img" alt="Vedere Apartament Titan">
+            
+            <div class="property-price">€500 / lună</div>
+            <h2>Apartament 2 camere - Metrou Titan</h2>
+            <div class="property-specs" style="margin-bottom: 1rem;">
+                <span><strong>Camere:</strong> 2</span> • <span><strong>Băi:</strong> 1</span> • <span><strong>Suprafață:</strong> 48.72 mp</span>
+            </div>
+            
+            <p style="color: var(--text-gray);">Apartament excelent situat, ideal pentru închiriere. Spațios, luminos și foarte aproape de stația de metrou Titan, oferind acces rapid către orice punct al orașului.</p>
+            
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-2-camere-de-inchiriat-titan-bucuresti-906" target="_blank" class="btn" style="text-align:center; background-color: var(--primary-black);">Vezi pe Site-ul Agenției</a>
+                <a href="#contact" class="btn" onclick="closeModal('modal1'); prepareContact('Apartament 2 camere - Metrou Titan (€500)')" style="text-align:center;">Solicită Informații</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <img src="panu.jpg" class="modal-main-img" alt="Vedere Apartament Anastasie Panu">
+            
+            <div class="property-price">€800 / lună</div>
+            <h2>Apartament mare și spațios - Unirii - Anastasie Panu</h2>
+            <div class="property-specs" style="margin-bottom: 1rem;">
+                <span><strong>Camere:</strong> 3</span> • <span><strong>Băi:</strong> 2</span> • <span><strong>Suprafață:</strong> 97 mp</span>
+            </div>
+            
+            <p style="color: var(--text-gray);">Apartament premium de 3 camere situat în inima orașului, zona Unirii - Anastasie Panu. Oferă o suprafață generoasă de 97 mp, finisaje de calitate și spații vitrate mari.</p>
+            
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank" class="btn" style="text-align:center; background-color: var(--primary-black);">Vezi pe Site-ul Agenției</a>
+                <a href="#contact" class="btn" onclick="closeModal('modal2'); prepareContact('Apartament Unirii - Anastasie Panu (€800)')" style="text-align:center;">Solicită Informații</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="about fade-in">
+        <h2>Susținută de cei mai buni</h2>
+        <p>Imobiliarele nu sunt doar despre proprietăți; sunt despre oameni. Abordarea mea este centrată în totalitate pe obiectivele tale. Fie că îți cumperi primul apartament sau vinzi o proprietate de lux, aduc la masă toată forța rețelei <strong>Daniel Dobre Imobiliare</strong>.</p>
+        <p>Transparență, negociere precisă și un ochi pentru estetică. Hai să facem ca următoarea ta mutare să fie cea mai bună.</p>
+    </section>
+
+    <section id="contact" class="contact fade-in">
+        <h2>Hai să găsim locul perfect pentru tine</h2>
+        <div class="contact-container">
+            <form onsubmit="return false;">
+                <div class="form-group">
+                    <label for="name">Nume și Prenume</label>
+                    <input type="text" id="name" placeholder="Popescu Ion" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Număr de Telefon</label>
+                    <input type="tel" id="phone" placeholder="+40 700 000 000" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Cu ce te pot ajuta?</label>
+                    <textarea id="message" rows="4" placeholder="Sunt interesat de..."></textarea>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 1rem;">Selectează metoda preferată de contact mai jos:</p>
+                
+                <div class="contact-methods-grid">
+                    <button type="button" onclick="sendViaWhatsApp()" class="btn" style="background-color: #25D366; font-size:0.9rem; padding:0.8rem;">Trimite prin WhatsApp</button>
+                    <button type="button" onclick="sendViaEmail()" class="btn" style="background-color: var(--brand-wine); font-size:0.9rem; padding:0.8rem;">Trimite prin Email</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">
+            <img src="logo.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px; margin-right: 10px;">
+            <img src="LOGO TRANSPARENT.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px;">
+        </div>
+        <p><strong>Cristina Dobre</strong> | Agent Imobiliar</p>
+        <p>Email: <a href="mailto:cristina@danieldobre.ro">cristina@danieldobre.ro</a> | Telefon: +40 770 741 602</p>
+        
+        <div class="socials">
+            <a href="https://www.instagram.com/cristina.ddi?igsh=MTdhODNhanRtdGl4Mw%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@ddimobiliare?_r=1&_t=ZN-97oMDD4ChGA" target="_blank">TikTok</a>
+            <a href="https://www.facebook.com/share/1DZida8nZY/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        </div>
+        
+        <p style="font-size: 0.8rem; color: var(--text-gray);">&copy; 2026 Cristina Dobre & Daniel Dobre Imobiliare. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        /* --- Scroll Animation Logic --- */
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(section => observer.observe(section));
+
+        /* --- Built-in Pop-up Modal Operations --- */
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            document.body.style.overflow = "hidden"; /* Freeze page scroll when open */
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; /* Restore scroll */
+        }
+        // Close modal automatically if clicking outside the bounding content box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        /* --- Automate Form Injection when Clicking from a Property Pop-up --- */
+        function prepareContact(propertyName) {
+            document.getElementById('message').value = "Bună Cristina, aș dori să programez o vizionare sau să primesc mai multe detalii despre " + propertyName + ".";
+        }
+
+        /* --- Device Routing Contact Submissions --- */
+        function getFormDetails() {
+            const name = document.getElementById('name').value || "Client";
+            const phone = document.getElementById('phone').value || "Nespecificat";
+            const msg = document.getElementById('message').value || "Sunt interesat de serviciile dvs.";
+            return { name, phone, msg };
+        }
+
+        function sendViaWhatsApp() {
+            const data = getFormDetails();
+            const formattedText = encodeURIComponent(`*Mesaj nou de pe site*\n\n*Nume:* ${data.name}\n*Telefon:* ${data.phone}\n*Mesaj:* ${data.msg}`);
+            window.open(`https://wa.me/40770741602?text=${formattedText}`, '_blank');
+        }
+
+        function sendViaEmail() {
+            const data = getFormDetails();
+            const subject = encodeURIComponent("Cerere Informații Proprietate - " + data.name);
+            const body = encodeURIComponent(`Nume: ${data.name}\nTelefon: ${data.phone}\n\nMesaj:\n${data.msg}`);
+            window.location.href = `mailto:cristina@danieldobre.ro?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>            color: inherit;
         }
         h1, h2, h3 {
             line-height: 1.2;
