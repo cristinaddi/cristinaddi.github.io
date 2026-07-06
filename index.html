@@ -76,7 +76,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem;
-            position: relative; /* Pentru a poziționa meniul de mobil corect */
+            position: relative;
         }
         .logo img {
             height: 45px;
@@ -96,7 +96,7 @@
             color: var(--brand-red);
         }
         
-        /* Mobile Menu Icon (Hidden on Desktop) */
+        /* Mobile Menu Icon */
         .menu-toggle {
             display: none;
             font-size: 2rem;
@@ -284,6 +284,7 @@
             color: var(--primary-white);
             font-size: 2.5rem;
             margin-bottom: 3rem;
+            text-align: center;
         }
         .contact-container {
             max-width: 650px;
@@ -348,14 +349,18 @@
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
+            /* Micsoram usor titlurile pe mobil ca sa nu se rupa urat */
+            h2 {
+                font-size: 2rem !important;
+            }
             .menu-toggle {
-                display: block; /* Arată iconița pe mobil */
+                display: block; 
             }
             .nav-links {
-                display: none; /* Ascunde meniul standard pe mobil */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
-                top: 75px; /* Imediat sub header */
+                top: 75px; 
                 left: 0;
                 width: 100%;
                 background-color: rgba(255, 255, 255, 0.98);
@@ -363,7 +368,7 @@
                 box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             }
             .nav-links.active {
-                display: flex; /* Arată meniul când are clasa 'active' */
+                display: flex; 
             }
             .nav-links a {
                 margin: 0.5rem 0;
@@ -442,8 +447,8 @@
     </section>
 
     <section id="properties" class="properties fade-in">
-        <h2>Portofoliu Proprietăți</h2>
-        <p style="text-align:center; margin-top:-1.5rem; margin-bottom:3.5rem; color:var(--text-gray);">Apasă pe orice proprietate pentru detalii și vizionări.</p>
+        <h2 style="margin-bottom: 0.5rem; text-align: center;">Portofoliu Proprietăți</h2>
+        <p style="text-align:center; margin-bottom:3.5rem; color:var(--text-gray);">Apasă pe orice proprietate pentru detalii și vizionări.</p>
         
         <div class="properties-grid">
             <div class="property-card" onclick="openModal('modal1')">
