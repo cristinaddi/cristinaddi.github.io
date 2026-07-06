@@ -76,6 +76,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem;
+            position: relative; /* Pentru a poziționa meniul de mobil corect */
         }
         .logo img {
             height: 45px;
@@ -85,6 +86,7 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            transition: all 0.3s ease;
         }
         .nav-links a {
             font-weight: 500;
@@ -92,6 +94,15 @@
         }
         .nav-links a:hover {
             color: var(--brand-red);
+        }
+        
+        /* Mobile Menu Icon (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-black);
+            user-select: none;
         }
 
         /* --- Hero Section (Full Page Background) --- */
@@ -337,13 +348,38 @@
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Arată iconița pe mobil */
+            }
+            .nav-links {
+                display: none; /* Ascunde meniul standard pe mobil */
+                flex-direction: column;
+                position: absolute;
+                top: 75px; /* Imediat sub header */
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex; /* Arată meniul când are clasa 'active' */
+            }
+            .nav-links a {
+                margin: 0.5rem 0;
+                font-size: 1.2rem;
+            }
+            .nav-links .btn {
+                margin-top: 1rem;
+                width: 80%;
+                text-align: center;
+            }
+            
             .hero {
-                /* Removed the heavy white gradient so the image shows clearly. Shifted background to 'center 15%' */
                 background: url('oras.png') no-repeat center 15% / cover;
                 padding-bottom: 8vh;
             }
             .hero-text {
-                /* Kept the frosted glass box so the text remains easy to read over the busy background */
                 background: rgba(255, 255, 255, 0.85);
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
@@ -357,9 +393,6 @@
             }
             .hero-text p {
                 font-size: 1.1rem;
-            }
-            .nav-links {
-                display: none; 
             }
             .about-container {
                 flex-direction: column;
@@ -388,7 +421,10 @@
             <div class="logo">
                 <a href="#home"><img src="logo.png" alt="Daniel Dobre Imobiliare"></a>
             </div>
-            <div class="nav-links">
+            <div class="menu-toggle" id="mobile-menu">
+                &#9776;
+            </div>
+            <div class="nav-links" id="nav-links">
                 <a href="#home">Acasă</a>
                 <a href="#properties">Proprietăți</a>
                 <a href="#about">Despre Cristina</a>
@@ -525,6 +561,21 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+        /* Mobile Menu Toggle Logic */
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        /* Close mobile menu when a link is clicked */
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         /* Modal Operations */
         function openModal(id) {
             document.getElementById(id).style.display = "flex";
@@ -534,3 +585,33 @@
             document.getElementById(id).style.display = "none";
             document.body.style.overflow = "auto";
         }
+
+        /* Form Logic */
+        function prepareContact(info) {
+            document.getElementById('message').value = "Bună Cristina, aș dori detalii despre: " + info;
+            window.location.href = "#contact";
+        }
+
+        function getDetails() {
+            return {
+                name: document.getElementById('name').value || "Client",
+                phone: document.getElementById('phone').value || "Nespecificat",
+                msg: document.getElementById('message').value || "Interes servicii."
+            };
+        }
+
+        function sendViaWhatsApp() {
+            const d = getDetails();
+            const text = encodeURIComponent(`*Nume:* ${d.name}\n*Telefon:* ${d.phone}\n*Mesaj:* ${d.msg}`);
+            window.open(`https://wa.me/40770741602?text=${text}`, '_blank');
+        }
+
+        function sendViaEmail() {
+            const d = getDetails();
+            const subject = encodeURIComponent("Cerere Site - " + d.name);
+            const body = encodeURIComponent(`Nume: ${d.name}\nTelefon: ${d.phone}\n\nMesaj: ${d.msg}`);
+            window.location.href = `mailto:cristina@danieldobre.ro?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
