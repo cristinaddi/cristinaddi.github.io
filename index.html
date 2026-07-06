@@ -239,17 +239,39 @@
             margin-top: 1.5rem;
         }
 
-        /* --- About Section --- */
+        /* --- About Section (REDESIGNED) --- */
         .about {
             padding: 5rem 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
-        .about p {
-            font-size: 1.2rem;
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            font-size: 1.1rem;
             color: var(--text-gray);
             margin-bottom: 1.5rem;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 8px;
+            box-shadow: -15px 15px 0px var(--brand-wine);
+            display: block;
+            margin: 0 auto;
         }
 
         /* --- Contact Section --- */
@@ -346,6 +368,17 @@
             .modal-buttons, .contact-methods-grid {
                 grid-template-columns: 1fr;
             }
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text h2 {
+                text-align: center;
+            }
+            .about-image img {
+                box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -372,7 +405,7 @@
             <a href="#properties" class="btn">Vezi Proprietățile Exclusive</a>
         </div>
         <div class="hero-image">
-            <img src="cristina.jpg" alt="Cristina Dobre">
+            <img src="oras.png" alt="Daniel Dobre Imobiliare">
         </div>
     </section>
 
@@ -454,9 +487,16 @@
     </div>
 
     <section id="about" class="about fade-in">
-        <h2>Susținută de cei mai buni</h2>
-        <p>Imobiliarele nu sunt doar despre proprietăți; sunt despre oameni. Abordarea mea este centrată în totalitate pe obiectivele tale. Fie că îți cumperi primul apartament sau vinzi o proprietate de lux, aduc la masă toată forța rețelei <strong>Daniel Dobre Imobiliare</strong>.</p>
-        <p>Transparență, negociere precisă și un ochi pentru estetică. Hai să facem ca următoarea ta mutare să fie cea mai bună.</p>
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Susținută de cei mai buni</h2>
+                <p>Imobiliarele nu sunt doar despre proprietăți; sunt despre oameni. Abordarea mea este centrată în totalitate pe obiectivele tale. Fie că îți cumperi primul apartament sau vinzi o proprietate de lux, aduc la masă toată forța rețelei <strong>Daniel Dobre Imobiliare</strong>.</p>
+                <p>Transparență, negociere precisă și un ochi pentru estetică. Hai să facem ca următoarea ta mutare să fie cea mai bună.</p>
+            </div>
+            <div class="about-image">
+                <img src="cristina.jpg" alt="Cristina Dobre">
+            </div>
+        </div>
     </section>
 
     <section id="contact" class="contact fade-in">
@@ -488,8 +528,7 @@
 
     <footer>
         <div class="logo" style="margin-bottom: 1rem;">
-            <img src="logo.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px; margin-right: 10px;">
-           
+            <img src="logo.png" alt="Daniel Dobre Imobiliare Logo" style="height: 30px;">
         </div>
         <p><strong>Cristina Dobre</strong> | Agent Imobiliar</p>
         <p>Email: <a href="mailto:cristina@danieldobre.ro">cristina@danieldobre.ro</a> | Telefon: +40 770 741 602</p>
@@ -519,13 +558,12 @@
         /* --- Built-in Pop-up Modal Operations --- */
         function openModal(id) {
             document.getElementById(id).style.display = "flex";
-            document.body.style.overflow = "hidden"; /* Freeze page scroll when open */
+            document.body.style.overflow = "hidden"; 
         }
         function closeModal(id) {
             document.getElementById(id).style.display = "none";
-            document.body.style.overflow = "auto"; /* Restore scroll */
+            document.body.style.overflow = "auto"; 
         }
-        // Close modal automatically if clicking outside the bounding content box
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = "none";
@@ -548,7 +586,7 @@
 
         function sendViaWhatsApp() {
             const data = getFormDetails();
-            const formattedText = encodeURIComponent(`*Mesaj nou de pe site*\n\n*Nume:* ${data.name}\n*Telefon:* ${data.phone}\n*Mesaj:* ${data.msg}`);
+            const formattedText = encodeURIComponent(`*Nume:* ${data.name}\n*Telefon:* ${data.phone}\n*Mesaj:* ${data.msg}`);
             window.open(`https://wa.me/40770741602?text=${formattedText}`, '_blank');
         }
 
