@@ -11,8 +11,8 @@
         :root {
             --primary-white: #ffffff;
             --primary-black: #000000;
-            --brand-wine: #660033;
-            --brand-wine-hover: #4d0026;
+            --brand-red: #ed2325; /* Noul roșu solicitat */
+            --brand-red-hover: #c41a1c; /* O nuanță mai închisă pentru hover */
             --light-gray: #f9f9f9;
             --text-gray: #555555;
             --border-color: #eaeaea;
@@ -43,7 +43,7 @@
         
         /* --- Buttons --- */
         .btn {
-            background-color: var(--brand-wine);
+            background-color: var(--brand-red);
             color: var(--primary-white);
             padding: 1rem 2.5rem;
             border: none;
@@ -55,7 +55,7 @@
             display: inline-block;
         }
         .btn:hover {
-            background-color: var(--brand-wine-hover);
+            background-color: var(--brand-red-hover);
             transform: translateY(-2px);
         }
 
@@ -91,7 +91,7 @@
             transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: var(--brand-wine);
+            color: var(--brand-red);
         }
 
         /* --- Hero Section (Full Page Background) --- */
@@ -119,7 +119,7 @@
             color: var(--primary-black);
         }
         .hero-text h1 span {
-            color: var(--brand-wine);
+            color: var(--brand-red);
         }
         .hero-text p {
             font-size: 1.2rem;
@@ -162,7 +162,7 @@
         .property-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--brand-wine);
+            color: var(--brand-red);
             margin-bottom: 0.5rem;
         }
         .property-title {
@@ -259,7 +259,7 @@
         .about-image img {
             width: 100%;
             border-radius: 8px;
-            box-shadow: -20px 20px 0px var(--brand-wine);
+            box-shadow: -20px 20px 0px var(--brand-red);
             display: block;
         }
 
@@ -320,7 +320,7 @@
         .socials a {
             margin: 0 15px;
             font-weight: 600;
-            color: var(--brand-wine);
+            color: var(--brand-red);
             font-size: 1.1rem;
         }
 
