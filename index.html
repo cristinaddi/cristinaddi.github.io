@@ -450,6 +450,7 @@
         <p style="text-align:center; margin-bottom:3.5rem; color:var(--text-gray);">Apasă pe orice proprietate pentru detalii și vizionări.</p>
         
         <div class="properties-grid">
+            
             <div class="property-card" onclick="openModal('modal1')">
                 <img src="titan.jpg" class="property-img" alt="Titan Apartment">
                 <div class="property-info">
@@ -471,6 +472,51 @@
                     </div>
                 </div>
             </div>
+
+            <div class="property-card" onclick="openModal('modal3')">
+                <img src="comarnic.jpg" class="property-img" alt="Vilă Comarnic">
+                <div class="property-info">
+                    <div class="property-price">€270.000</div>
+                    <h3 class="property-title">Între apus și răsărit - magia viselor dintre nori</h3>
+                    <div class="property-specs">
+                        <span>5 Camere</span> • <span>Vedere Panoramică</span> • <span>Comarnic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal('modal4')">
+                <img src="binelui.png" class="property-img" alt="Apartament Berceni">
+                <div class="property-info">
+                    <div class="property-price">€85.000</div>
+                    <h3 class="property-title">Apartament 2 camere ieftin și bun</h3>
+                    <div class="property-specs">
+                        <span>2 Camere</span> • <span>1 Baie</span> • <span>44.77 mp</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal('modal5')">
+                <img src="sibiu.png" class="property-img" alt="Apartament Favorit">
+                <div class="property-info">
+                    <div class="property-price">€120.000</div>
+                    <h3 class="property-title">Apartament Premium, Complet Renovat</h3>
+                    <div class="property-specs">
+                        <span>2 Camere</span> • <span>1 Baie</span> • <span>52 mp</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card" onclick="openModal('modal6')">
+                <img src="sudului.png" class="property-img" alt="Apartament Piața Sudului">
+                <div class="property-info">
+                    <div class="property-price">€107.500</div>
+                    <h3 class="property-title">Apartament 3 camere Piața Sudului</h3>
+                    <div class="property-specs">
+                        <span>3 Camere</span> • <span>Metrou 3 min</span> • <span>Berceni</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -498,6 +544,62 @@
             <div class="modal-buttons">
                 <a href="https://danieldobre.ro/apartament-3-camere-de-inchiriat-nerva-traian-bucuresti-896" target="_blank" class="btn" style="background-color: #000; text-align:center;">Vezi pe Site Agenție</a>
                 <button class="btn" onclick="closeModal('modal2'); prepareContact('Unirii Anastasie Panu')" style="text-align:center;">Vreau Detalii</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <img src="comarnic.jpg" class="modal-main-img" alt="Vilă Comarnic Detail">
+            <div class="property-price">€270.000</div>
+            <h2>Între apus și răsărit - magia viselor dintre nori</h2>
+            <p style="color: var(--text-gray); margin: 1rem 0;">Aceasta nu este o casă. Aceasta este o poveste de dragoste! Într-o după amiază însorită, am plecat din București să văd "o casă". Și am ajuns să văd o proprietate de care m-am îndrăgostit.</p>
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/casa-vila-5-camere-de-vanzare-comarnic-899" target="_blank" class="btn" style="background-color: #000; text-align:center;">Vezi pe Site Agenție</a>
+                <button class="btn" onclick="closeModal('modal3'); prepareContact('Vilă Comarnic')" style="text-align:center;">Vreau Detalii</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal4')">&times;</span>
+            <img src="binelui.png" class="modal-main-img" alt="Apartament Berceni Detail">
+            <div class="property-price">€85.000</div>
+            <h2>Apartament 2 camere ieftin și bun</h2>
+            <p style="color: var(--text-gray); margin: 1rem 0;">Bun venit! Vă propun să vă opriți atenția asupra acestui apartament cu 2 camere, situat în zona Berceni, pe Drumul Binelui nr. 184-188. Când spun „ieftin și bun”, mă refer la acel echilibru perfect între un preț corect și calitatea locuirii.</p>
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-2-camere-de-vanzare-berceni-bucuresti-905" target="_blank" class="btn" style="background-color: #000; text-align:center;">Vezi pe Site Agenție</a>
+                <button class="btn" onclick="closeModal('modal4'); prepareContact('Apartament Drumul Binelui')" style="text-align:center;">Vreau Detalii</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal5')">&times;</span>
+            <img src="sibiu.png" class="modal-main-img" alt="Apartament Favorit Detail">
+            <div class="property-price">€120.000</div>
+            <h2>Apartament Premium, Complet Renovat</h2>
+            <p style="color: var(--text-gray); margin: 1rem 0;">Gata cu șantierele. Mută-te direct într-un apartament „la cheie”, în zona Favorit (0% Comision). Căutarea unui apartament în București vine adesea la pachet cu un compromis destul de enervant. Ori prinzi o locație excelentă, ori găsești unul renovat. Aici, le ai pe amândouă!</p>
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-2-camere-de-vanzare-timisoara-bucuresti-879" target="_blank" class="btn" style="background-color: #000; text-align:center;">Vezi pe Site Agenție</a>
+                <button class="btn" onclick="closeModal('modal5'); prepareContact('Apartament Complet Renovat Favorit')" style="text-align:center;">Vreau Detalii</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal6')">&times;</span>
+            <img src="sudului.png" class="modal-main-img" alt="Apartament Piața Sudului Detail">
+            <div class="property-price">€107.500</div>
+            <h2>Apartament 3 camere Piața Sudului - poziție excelentă</h2>
+            <p style="color: var(--text-gray); margin: 1rem 0;">Apartament cu 3 camere situat pe strada Nițu Vasile, în zona Piața Sudului, Berceni. O locație foarte căutată datorită accesului rapid la transport, centre comerciale (Sun Plaza) și numeroase facilități pentru viața de zi cu zi.</p>
+            <div class="modal-buttons">
+                <a href="https://danieldobre.ro/apartament-3-camere-de-vanzare-oltenitei-bucuresti-884" target="_blank" class="btn" style="background-color: #000; text-align:center;">Vezi pe Site Agenție</a>
+                <button class="btn" onclick="closeModal('modal6'); prepareContact('Apartament 3 Camere Piața Sudului')" style="text-align:center;">Vreau Detalii</button>
             </div>
         </div>
     </div>
