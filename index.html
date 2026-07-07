@@ -81,6 +81,7 @@
         .logo img {
             height: 45px;
             width: auto;
+            display: block;
         }
         .nav-links {
             display: flex;
@@ -422,9 +423,12 @@
 
     <header>
         <nav>
-            <div class="logo">
-                <a href="#home"><img src="logo.png" alt="Daniel Dobre Imobiliare"></a>
+            <div class="logo" style="position: relative; display: inline-block;">
+                <img src="logo.png" alt="Daniel Dobre Imobiliare & RENET">
+                <a href="https://danieldobre.ro/" target="_blank" title="Daniel Dobre Imobiliare" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%;"></a>
+                <a href="https://renet.ro/" target="_blank" title="RENET" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%;"></a>
             </div>
+            
             <div class="menu-toggle" id="mobile-menu">
                 &#9776;
             </div>
@@ -646,8 +650,10 @@
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 1.5rem;">
-            <img src="logo.png" alt="Logo">
+        <div class="logo" style="margin-bottom: 1.5rem; position: relative; display: inline-block;">
+            <img src="logo.png" alt="Daniel Dobre Imobiliare & RENET">
+            <a href="https://danieldobre.ro/" target="_blank" title="Daniel Dobre Imobiliare" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%;"></a>
+            <a href="https://renet.ro/" target="_blank" title="RENET" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%;"></a>
         </div>
         <p><strong>Cristina Dobre</strong> | Agent Imobiliar | REALTOR® APAIR</p>
         <p>Email: cristina@danieldobre.ro | Telefon: +40 770 741 602</p>
