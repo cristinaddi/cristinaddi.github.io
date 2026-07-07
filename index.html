@@ -623,7 +623,7 @@
     <section id="contact" class="contact fade-in">
         <h2>Hai să discutăm</h2>
         <div class="contact-container">
-            <form onsubmit="return false;">
+            <form id="contactForm" onsubmit="return false;">
                 <div class="form-group">
                     <label>Nume și Prenume</label>
                     <input type="text" id="name" placeholder="Numele tău" required>
@@ -700,21 +700,35 @@
             window.location.href = "#contact";
         }
 
+        // Added validation check
+        function validateForm() {
+            const form = document.getElementById('contactForm');
+            if (!form.checkValidity()) {
+                form.reportValidity(); // This triggers the browser's native required field warning
+                return false;
+            }
+            return true;
+        }
+
         function getDetails() {
             return {
-                name: document.getElementById('name').value || "Client",
-                phone: document.getElementById('phone').value || "Nespecificat",
-                msg: document.getElementById('message').value || "Interes servicii."
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                msg: document.getElementById('message').value.trim() || "Interes servicii."
             };
         }
 
         function sendViaWhatsApp() {
+            if (!validateForm()) return; // Stop if form is invalid
+            
             const d = getDetails();
             const text = encodeURIComponent(`*Nume:* ${d.name}\n*Telefon:* ${d.phone}\n*Mesaj:* ${d.msg}`);
             window.open(`https://wa.me/40770741602?text=${text}`, '_blank');
         }
 
         function sendViaEmail() {
+            if (!validateForm()) return; // Stop if form is invalid
+            
             const d = getDetails();
             const subject = encodeURIComponent("Cerere Site - " + d.name);
             const body = encodeURIComponent(`Nume: ${d.name}\nTelefon: ${d.phone}\n\nMesaj: ${d.msg}`);
