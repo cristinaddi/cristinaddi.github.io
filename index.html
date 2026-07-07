@@ -630,7 +630,7 @@
                 </div>
                 <div class="form-group">
                     <label>Număr de Telefon</label>
-                    <input type="tel" id="phone" placeholder="+40 7xx xxx xxx" required>
+                    <input type="tel" id="phone" placeholder="+40 7xx xxx xxx" required pattern="^[\+]?[0-9\s\-]{9,15}$" title="Vă rugăm să introduceți un număr valid (minimum 9 cifre)" oninput="this.value = this.value.replace(/[^0-9\+\s\-]/g, '')">
                 </div>
                 <div class="form-group">
                     <label>Mesaj</label>
@@ -700,11 +700,10 @@
             window.location.href = "#contact";
         }
 
-        // Added validation check
         function validateForm() {
             const form = document.getElementById('contactForm');
             if (!form.checkValidity()) {
-                form.reportValidity(); // This triggers the browser's native required field warning
+                form.reportValidity(); 
                 return false;
             }
             return true;
@@ -719,7 +718,7 @@
         }
 
         function sendViaWhatsApp() {
-            if (!validateForm()) return; // Stop if form is invalid
+            if (!validateForm()) return; 
             
             const d = getDetails();
             const text = encodeURIComponent(`*Nume:* ${d.name}\n*Telefon:* ${d.phone}\n*Mesaj:* ${d.msg}`);
@@ -727,7 +726,7 @@
         }
 
         function sendViaEmail() {
-            if (!validateForm()) return; // Stop if form is invalid
+            if (!validateForm()) return; 
             
             const d = getDetails();
             const subject = encodeURIComponent("Cerere Site - " + d.name);
